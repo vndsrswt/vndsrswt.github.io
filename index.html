@@ -1,65 +1,237 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adv. Suraj Dixit - Rajasthan High Court, Jaipur</title>
-  <meta name="description" content="Advocate Suraj Dixit - Rajasthan High Court, Jaipur. Specializing in civil, criminal, service, writs, and arbitration matters.">
-  <link rel="stylesheet" href="style/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advocate Suraj Dixit | Rajasthan High Court, Jaipur</title>
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<!-- Animate.css -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+<!-- AOS Animation CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="Style/Style.css">
+<link rel="stylesheet" href="Style/themes.css">
 </head>
-<body data-theme="light">
-  <header>
+<body class="light-theme">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
     <div class="container">
-      <h1>Adv. Suraj Dixit</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+        <a class="navbar-brand fw-bold" href="#">Adv. Suraj Dixit</a>
+        <button class="btn btn-outline-secondary" id="theme-toggle"><i class="fas fa-adjust"></i></button>
     </div>
-  </header>
+</nav>
 
-  <main class="container">
-    <section class="profile">
-      <img src="assets/images/profile.jpg" alt="Suraj Dixit" class="profile-img">
-      <div>
-        <h2>Welcome</h2>
-        <p>Advocate Suraj Dixit is a highly experienced lawyer practicing at the Rajasthan High Court, Jaipur. With expertise in civil, criminal, service, writs, and arbitration matters, he is committed to providing professional legal services to his clients.</p>
-      </div>
-    </section>
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center text-center text-light" id="home">
+    <div class="container" data-aos="zoom-in">
+        <h1 class="fw-bold animate__animated animate__fadeInDown">Advocate Suraj Dixit</h1>
+        <p class="lead animate__animated animate__fadeInUp">Rajasthan High Court, Jaipur</p>
+        <p class="tagline">"Justice, Integrity, and Commitment to Every Case"</p>
+        <a href="#contact" class="btn btn-warning mt-3 animate__animated animate__pulse animate__infinite">Book a Consultation</a>
+    </div>
+</section>
 
-    <section class="columns">
-      <div class="column">
-        <h3>Practice Areas</h3>
+<!-- About -->
+<section class="py-5 bg-light" id="about">
+    <div class="container" data-aos="fade-up">
+        <h2 class="text-center mb-4">About Me</h2>
+        <p class="text-center">With over 10 years of legal experience in Civil, Criminal, Family, and Corporate Law, I regularly represent clients in the Rajasthan High Court and District Courts. I believe in client-focused advocacy, transparent communication, and delivering results with professionalism.</p>
+    </div>
+</section>
+
+<!-- Practice Areas -->
+<section class="py-5" id="practice-areas">
+    <div class="container" data-aos="fade-up">
+        <h2 class="text-center mb-4">Practice Areas</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card custom-card h-100 text-center p-3">
+                    <i class="fas fa-landmark fa-3x mb-3 text-warning"></i>
+                    <h5>Civil Litigation</h5>
+                    <p>Property disputes, contract law, and injunctions handled with precision and care.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card custom-card h-100 text-center p-3">
+                    <i class="fas fa-balance-scale fa-3x mb-3 text-warning"></i>
+                    <h5>Criminal Defense</h5>
+                    <p>Bail applications, trial representation, and defending the innocent with integrity.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card custom-card h-100 text-center p-3">
+                    <i class="fas fa-users fa-3x mb-3 text-warning"></i>
+                    <h5>Family Law</h5>
+                    <p>Divorce, custody, and maintenance cases resolved with sensitivity and fairness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light" id="about">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-4">About Advocate Suraj Dixit</h2>
+    <p class="text-center">
+      Advocate Suraj Dixit is a practicing lawyer at the Rajasthan High Court, Jaipur,
+      with over 10 years of legal experience in civil, criminal, family, and corporate law.
+      Known for his integrity and client-first approach, he has successfully represented
+      clients in complex and high-profile cases.
+    </p>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h5><i class="fas fa-user-graduate me-2 text-warning"></i>Education</h5>
         <ul>
-          <li>Civil Law</li>
-          <li>Criminal Law</li>
-          <li>Service Law</li>
-          <li>Writs</li>
-          <li>Arbitration</li>
+          <li>B.A. LL.B (Hons.), University of Rajasthan</li>
+          <li>Diploma in Corporate Law, National Law School</li>
+          <li>Advanced Criminal Procedure Certification</li>
         </ul>
       </div>
-      <div class="column">
-        <h3>Achievements</h3>
+      <div class="col-md-6">
+        <h5><i class="fas fa-briefcase me-2 text-warning"></i>Experience</h5>
         <ul>
-          <li>Successfully handled over 500 cases in the Rajasthan High Court.</li>
-          <li>Recognized for excellence in arbitration and mediation.</li>
-          <li>Published articles on legal reforms in reputed journals.</li>
+          <li>Advocate, Rajasthan High Court (2013 – Present)</li>
+          <li>Legal Advisor for multiple corporate firms</li>
+          <li>Represented clients in over 500+ successful cases</li>
         </ul>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
+</section>
+<section class="py-5" id="experience">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-4">Experience Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h5>2013 – Present</h5>
+        <p>Advocate, Rajasthan High Court – Specializing in Civil & Criminal Law</p>
+      </div>
+      <div class="timeline-item">
+        <h5>2010 – 2013</h5>
+        <p>Junior Associate under Senior Advocate R.K. Sharma</p>
+      </div>
+      <div class="timeline-item">
+        <h5>2005 – 2010</h5>
+        <p>Law Student – University of Rajasthan (B.A. LL.B Hons.)</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-5 bg-light" id="news">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-4">Latest Legal News</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card custom-card p-3">
+          <h6>Supreme Court Expands Right to Privacy</h6>
+          <p>The Supreme Court rules in favor of broader privacy rights...</p>
+          <a href="#" class="text-warning">Read More</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card custom-card p-3">
+          <h6>Rajasthan High Court on Land Disputes</h6>
+          <p>New precedent set in land acquisition and property disputes...</p>
+          <a href="#" class="text-warning">Read More</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card custom-card p-3">
+          <h6>Corporate Law Updates 2025</h6>
+          <p>Recent amendments to Companies Act & their implications...</p>
+          <a href="#" class="text-warning">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-5" id="twitter">
+  <div class="container text-center" data-aos="fade-up">
+    <h2 class="mb-4">Follow Me on Twitter</h2>
+    <blockquote class="twitter-tweet">
+      <p lang="en" dir="ltr">Latest updates and insights on law and justice.</p>&mdash; Suraj Dixit (@SurajDixitLaw) 
+    </blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Adv. Suraj Dixit. All rights reserved.</p>
-  </footer>
+<!-- Success Stories -->
+<section class="py-5 bg-light" id="success-stories">
+    <div class="container" data-aos="fade-up">
+        <h2 class="text-center mb-4">Case Success Stories</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card custom-card h-100 p-3">
+                    <p>Won a landmark property dispute saving client's ₹5 crore estate.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card custom-card h-100 p-3">
+                    <p>Secured bail in high-profile criminal matter in record time.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card custom-card h-100 p-3">
+                    <p>Negotiated amicable divorce settlement with zero litigation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light" id="resources">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-4">Useful Legal Resources</h2>
+    <ul class="list-group">
+      <li class="list-group-item"><a href="https://hcraj.nic.in" target="_blank">Rajasthan High Court</a></li>
+      <li class="list-group-item"><a href="https://barcouncilofindia.org" target="_blank">Bar Council of India</a></li>
+      <li class="list-group-item"><a href="https://indiacode.nic.in" target="_blank">Indian Law & Bare Acts</a></li>
+      <li class="list-group-item"><a href="https://supremecourtofindia.nic.in" target="_blank">Supreme Court of India</a></li>
+    </ul>
+  </div>
+</section>
 
-  <script src="Script/Script.js"></script>
+<!-- Contact -->
+<section class="py-5" id="contact">
+    <div class="container" data-aos="fade-up">
+        <h2 class="text-center mb-4">Contact</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Address:</strong> Chamber No. 12, Rajasthan High Court, Jaipur</p>
+                <p><strong>Phone:</strong> +91-9876543210</p>
+                <p><strong>Email:</strong> contact@surajdixitlaw.in</p>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <input type="text" class="form-control mb-2" placeholder="Name">
+                    <input type="email" class="form-control mb-2" placeholder="Email">
+                    <input type="text" class="form-control mb-2" placeholder="Case Type">
+                    <textarea class="form-control mb-2" rows="4" placeholder="Message"></textarea>
+                    <button class="btn btn-warning w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-3 bg-dark text-light text-center">
+    <p>&copy; 2025 Advocate Suraj Dixit | Rajasthan High Court, Jaipur</p>
+</footer>
+
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="Script/main.js"></script>
+<script>
+    AOS.init();
+</script>
 </body>
 </html>

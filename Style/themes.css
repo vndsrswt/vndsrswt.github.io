@@ -1,0 +1,14 @@
+.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.dark-theme {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-theme .custom-card {
+    background: #2a2a2a;
+    color: white;
+}
