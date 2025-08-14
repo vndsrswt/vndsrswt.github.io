@@ -1,277 +1,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Adv. Suraj Dixit — Rajasthan High Court, Jaipur</title>
-  <meta name="description" content="Advocate Suraj Dixit — Rajasthan High Court, Jaipur. Civil, Criminal, Service, Writs, Arbitration. Consultations, filings, and representation." />
-  <meta property="og:title" content="Adv. Suraj Dixit — Rajasthan High Court, Jaipur" />
-  <meta property="og:description" content="Civil · Criminal · Service · Writs · Arbitration" />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0b2545" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adv. Suraj Dixit - Rajasthan High Court, Jaipur</title>
+  <meta name="description" content="Advocate Suraj Dixit - Rajasthan High Court, Jaipur. Specializing in civil, criminal, service, writs, and arbitration matters.">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    /* =======================
-       THEME & TOKENS
-       ======================= */
-    :root {
-      --bg: #f6f8fb;
-      --surface: #ffffff;
-      --text: #0c1421;
-      --muted: #515a6a;
-      --brand: #0b2545;       /* Navy */
-      --brand-2: #b6893f;     /* Gold */
-      --accent: #2d6cdf;      /* Link */
-      --ring: rgba(13, 110, 253, .35);
-      --shadow: 0 10px 30px rgba(11, 37, 69, 0.10);
-      --radius-lg: 18px;
-      --radius-sm: 12px;
-      --container: 1200px;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0a0e14;
-        --surface: #0f1622;
-        --text: #e7eefc;
-        --muted: #9aa5b5;
-        --brand: #dde6f7;
-        --brand-2: #d9b97a;
-        --accent: #8ab4ff;
-        --shadow: 0 10px 28px rgba(0,0,0,.45);
-      }
-    }
-
-    /* Global reset */
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text); background: radial-gradient(1200px 600px at 10% -20%, rgba(45,108,223,0.06), transparent 60%), var(--bg);
-      line-height: 1.6;
-    }
-    .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Header */
-    header {
-      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(180%) blur(12px);
-      background: color-mix(in oklab, var(--bg) 70%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--brand); }
-    .brand .logo {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: linear-gradient(145deg, var(--brand), #163a6e);
-      display: grid; place-items: center; color: white; font-family: "Playfair Display", serif; font-size: 22px; box-shadow: var(--shadow);
-    }
-    nav ul { list-style: none; display: flex; gap: 18px; margin: 0; padding: 0; }
-    nav a { font-weight: 600; color: var(--text); opacity: .85; }
-    nav a:hover { opacity: 1; }
-
-    /* Hero */
-    .hero { padding: 56px 0 28px; }
-    .hero-card {
-      background: var(--surface); border-radius: var(--radius-lg); box-shadow: var(--shadow);
-      padding: 34px; display: grid; gap: 24px; align-items: center;
-      grid-template-columns: 1.3fr 1fr;
-    }
-    .hero h1 { font-family: "Playfair Display", serif; font-size: clamp(28px, 4vw, 44px); line-height: 1.2; margin: 0 0 10px; }
-    .hero p.sub { color: var(--muted); margin: 6px 0 20px; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 100px; background: color-mix(in oklab, var(--brand-2) 18%, var(--surface)); border: 1px solid color-mix(in oklab, var(--brand-2) 30%, transparent); font-weight: 600; }
-    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      appearance: none; border: 0; border-radius: 14px; padding: 12px 16px; font-weight: 700; cursor: pointer;
-      background: var(--brand); color: white; box-shadow: var(--shadow);
-    }
-    .btn.alt { background: var(--surface); color: var(--brand); border: 2px solid color-mix(in oklab, var(--brand) 35%, var(--surface)); }
-    .portrait { justify-self: end; width: min(320px, 100%); aspect-ratio: 1; border-radius: 24px; background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 20%, transparent), transparent 60%), url('https://images.unsplash.com/photo-1520697222861-e0a1adf1c8ea?q=80&w=1200&auto=format&fit=crop') center/cover; box-shadow: var(--shadow); border: 6px solid color-mix(in oklab, var(--brand) 10%, var(--surface)); }
-    @media (max-width: 900px) { .hero-card { grid-template-columns: 1fr; } .portrait { justify-self: center; } }
-
-    /* MULTI-COLUMN ARCHITECTURE (Grid) */
-    .grid { display: grid; gap: 18px; }
-    .cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .cols-2 { grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 900px) { .cols-3 { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .cols-3, .cols-2 { grid-template-columns: 1fr; } }
-
-    /* Cards */
-    .card { background: var(--surface); border-radius: var(--radius-sm); padding: 22px; box-shadow: var(--shadow); border: 1px solid color-mix(in oklab, var(--text) 8%, transparent); }
-    .card h3 { margin: 0 0 8px; font-size: 18px; }
-    .muted { color: var(--muted); }
-
-    /* Section titles */
-    .section { padding: 18px 0 8px; }
-    .section h2 { font-family: "Playfair Display", serif; font-size: 26px; margin: 0 0 10px; }
-    .section p.lead { margin: 0 0 16px; color: var(--muted); }
-
-    /* Sidebar layout (3-column: left sidebar / main / right sidebar) */
-    .layout-3col { display: grid; gap: 18px; grid-template-columns: 280px minmax(0,1fr) 320px; }
-    @media (max-width: 1100px) { .layout-3col { grid-template-columns: 240px minmax(0,1fr); } .col-right { display:none; } }
-    @media (max-width: 780px) { .layout-3col { grid-template-columns: 1fr; } .col-left { order: 2; } }
-
-    /* List styles */
-    .list { margin: 0; padding-left: 18px; }
-    .list li { margin: 6px 0; }
-
-    /* Footer */
-    footer { margin-top: 40px; border-top: 1px dashed color-mix(in oklab, var(--text) 12%, transparent); }
-    .footer-inner { padding: 24px 0 48px; display: grid; gap: 12px; align-items: center; justify-content: space-between; grid-template-columns: 1fr auto; }
-
-    /* Utilities */
-    .chip { display:inline-flex; align-items:center; gap:8px; background: color-mix(in oklab, var(--brand) 10%, var(--surface)); border:1px solid color-mix(in oklab, var(--brand) 25%, transparent); padding:6px 10px; border-radius: 999px; font-size: 13px; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-
-    /* Print (clean letterhead) */
-    @media print {
-      header,.cta, .portrait, .col-right, .btn { display:none !important; }
-      body { background: #fff; }
-      .card, .hero-card { box-shadow: none; border: 1px solid #ddd; }
-    }
-  </style>
 </head>
-<body>
-  <!-- ======= Header / Navigation ======= -->
+<body data-theme="light">
   <header>
-    <div class="container nav">
-      <div class="brand"><div class="logo" aria-hidden="true">SD</div> Adv. Suraj Dixit</div>
-      <nav aria-label="Primary">
+    <div class="container">
+      <h1>Adv. Suraj Dixit</h1>
+      <nav>
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#practice">Practice Areas</a></li>
-          <li><a href="#cases">Highlights</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+      <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
     </div>
   </header>
 
-  <!-- ======= Hero ======= -->
-  <section class="hero container">
-    <div class="hero-card">
+  <main class="container">
+    <section class="profile">
+      <img src="assets/images/profile.jpg" alt="Suraj Dixit" class="profile-img">
       <div>
-        <span class="badge" title="Rajasthan High Court, Jaipur Bench">
-          Rajasthan High Court • Jaipur Bench
-        </span>
-        <h1>Advocate <span style="color:var(--brand)">Suraj Dixit</span></h1>
-        <p class="sub">Civil • Criminal • Service • Writs • Arbitration</p>
-        <div class="cta">
-          <a class="btn" href="#contact">Book a Consultation</a>
-          <a class="btn alt" href="#practice">View Practice Areas</a>
-        </div>
+        <h2>Welcome</h2>
+        <p>Advocate Suraj Dixit is a highly experienced lawyer practicing at the Rajasthan High Court, Jaipur. With expertise in civil, criminal, service, writs, and arbitration matters, he is committed to providing professional legal services to his clients.</p>
       </div>
-      <div class="portrait" role="img" aria-label="Elegant abstract portrait placeholder"></div>
-    </div>
-  </section>
-
-  <!-- ======= 3-Column Layout ======= -->
-  <main class="container layout-3col">
-    <!-- Left Sidebar -->
-    <aside class="col-left grid" aria-label="Profile and Credentials">
-      <div class="card">
-        <h3>Profile</h3>
-        <p class="muted">Based in Jaipur, representing clients before the Rajasthan High Court and subordinate courts.</p>
-        <ul class="list">
-          <li><strong>Enrollment:</strong> Bar Council of Rajasthan</li>
-          <li><strong>Languages:</strong> English, Hindi</li>
-          <li><strong>Consults:</strong> In-person & Virtual</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Credentials</h3>
-        <ul class="list">
-          <li>LL.B., (University — year)</li>
-          <li>5+ years litigation experience (edit)</li>
-          <li>Member, Rajasthan High Court Bar Association</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Downloads</h3>
-        <p class="muted">One‑page profile and engagement terms.</p>
-        <p><a href="#" download>Profile PDF</a></p>
-        <p><a href="#" download>Engagement Terms</a></p>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <section>
-      <section id="about" class="section">
-        <h2>About</h2>
-        <p class="lead">Suraj Dixit is an advocate practising primarily at the Rajasthan High Court, Jaipur Bench, focusing on high‑stakes litigation and advisory across civil disputes, criminal matters, service jurisprudence, writs and arbitration.</p>
-      </section>
-
-      <section id="practice" class="section">
-        <h2>Practice Areas</h2>
-        <div class="grid cols-3">
-          <div class="card"><h3>Civil Litigation</h3><p class="muted">Property, contracts, injunctions, declaratory suits, execution.</p></div>
-          <div class="card"><h3>Criminal</h3><p class="muted">Bail, quashing, trial strategy, criminal revision & appeal.</p></div>
-          <div class="card"><h3>Service & Employment</h3><p class="muted">Appointments, promotions, disciplinary proceedings, pensions.</p></div>
-          <div class="card"><h3>Writs</h3><p class="muted">Article 226/227 matters, public law & governmental action.</p></div>
-          <div class="card"><h3>Arbitration</h3><p class="muted">Section 9/11 applications, enforcement & challenge.</p></div>
-          <div class="card"><h3>Advisory</h3><p class="muted">Opinions, due diligence, contract vetting.</p></div>
-        </div>
-      </section>
-
-      <section id="cases" class="section">
-        <h2>Highlights</h2>
-        <div class="grid cols-2">
-          <div class="card">
-            <h3>Representative Matters</h3>
-            <ul class="list">
-              <li>Successfully obtained interim protection in complex commercial disputes.</li>
-              <li>Advised on service law promotions involving statewide cadres.</li>
-              <li>Handled quashing petitions in sensitive criminal proceedings.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Approach</h3>
-            <p class="muted">Research‑driven pleadings, clear client communication, and pragmatic settlement strategy when advantageous.</p>
-            <div class="chip" title="Client‑centric">Client‑centric</div>
-            <div class="chip" title="Result‑oriented">Result‑oriented</div>
-          </div>
-        </div>
-      </section>
     </section>
 
-    <!-- Right Sidebar -->
-    <aside class="col-right grid" aria-label="Contact and Location">
-      <div class="card" id="contact">
-        <h3>Contact</h3>
-        <p><strong>Chambers:</strong><br> Near Rajasthan High Court (Jaipur Bench)<br> Jaipur, Rajasthan</p>
-        <p><strong>Email:</strong> <a href="mailto:adv.suraj.dixit@example.com">adv.suraj.dixit@example.com</a><br>
-           <strong>Phone:</strong> <a href="tel:+91XXXXXXXXXX">+91 XXXXX‑XXXXX</a></p>
-        <a class="btn" href="mailto:adv.suraj.dixit@example.com?subject=Consultation%20Request">Request Consultation</a>
-      </div>
-      <div class="card">
-        <h3>Office Hours</h3>
-        <ul class="list">
-          <li>Mon–Fri: 10:30–18:30</li>
-          <li>Sat: 10:30–14:00</li>
-          <li>Sun: Closed</li>
+    <section class="columns">
+      <div class="column">
+        <h3>Practice Areas</h3>
+        <ul>
+          <li>Civil Law</li>
+          <li>Criminal Law</li>
+          <li>Service Law</li>
+          <li>Writs</li>
+          <li>Arbitration</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Maps</h3>
-        <p class="muted">Jaipur Bench, Rajasthan High Court.</p>
-        <a class="btn alt" href="https://maps.google.com" target="_blank" rel="noopener">Open in Google Maps</a>
+      <div class="column">
+        <h3>Achievements</h3>
+        <ul>
+          <li>Successfully handled over 500 cases in the Rajasthan High Court.</li>
+          <li>Recognized for excellence in arbitration and mediation.</li>
+          <li>Published articles on legal reforms in reputed journals.</li>
+        </ul>
       </div>
-    </aside>
+    </section>
   </main>
 
-  <!-- ======= Footer ======= -->
   <footer>
-    <div class="container footer-inner">
-      <small>© <span id="y"></span> Adv. Suraj Dixit. All rights reserved.</small>
-      <small>Site theme: <span class="chip">Navy & Gold</span> · Built for GitHub Pages</small>
-    </div>
+    <p>&copy; <span id="year"></span> Adv. Suraj Dixit. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Dynamic year, simple focus ring helper
-    document.getElementById('y').textContent = new Date().getFullYear();
-    document.addEventListener('keydown', e => { if (e.key === 'Tab') document.body.classList.add('show-focus'); });
-  </script>
+  <script src="Script/Script.js"></script>
 </body>
 </html>
