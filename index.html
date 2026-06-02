@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Hub</title>
+    <!-- Tailwind CSS for modern, easy styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome for clean icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r header-gradient from-blue-600 to-indigo-700 text-white py-10 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight">Personal Workspace</h1>
+                <p class="text-blue-100 mt-1 text-sm md:text-base">Your centralized hub for tools, documents, history, and bookmarks.</p>
+            </div>
+            <!-- Quick Search Bar (Visual) -->
+            <div class="relative w-full md:w-72">
+                <input type="text" placeholder="Search resources..." class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm">
+                <i class="fas fa-search absolute right-3 top-3 text-white/60"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Category 1: Digital Tools -->
+            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-blue-100 text-blue-600 p-2.5 rounded-lg">
+                        <i class="fas fa-tools text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900">Web Tools</h2>
+                </div>
+                <ul class="space-y-2.5">
+                    <li><a href="https://github.com" target="_blank" class="flex items-center text-slate-600 hover:text-blue-600 transition-colors"><i class="fab fa-github w-6 text-slate-400"></i> GitHub</a></li>
+                    <li><a href="https://chatgpt.com" target="_blank" class="flex items-center text-slate-600 hover:text-blue-600 transition-colors"><i class="fas fa-robot w-6 text-slate-400"></i> AI Assistant</a></li>
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-blue-600 transition-colors"><i class="fas fa-code w-6 text-slate-400"></i> Code Sandbox</a></li>
+                </ul>
+            </div>
+
+            <!-- Category 2: Documents & Notes -->
+            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-lg">
+                        <i class="fas fa-file-alt text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900">Documents</h2>
+                </div>
+                <ul class="space-y-2.5">
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-emerald-600 transition-colors"><i class="fas fa-book w-6 text-slate-400"></i> Personal Wiki</a></li>
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-emerald-600 transition-colors"><i class="fas fa-id-card w-6 text-slate-400"></i> Resume / CV</a></li>
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-emerald-600 transition-colors"><i class="fas fa-sticky-note w-6 text-slate-400"></i> Quick Notes</a></li>
+                </ul>
+            </div>
+
+            <!-- Category 3: History & Logs -->
+            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-amber-100 text-amber-600 p-2.5 rounded-lg">
+                        <i class="fas fa-history text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900">History & Logs</h2>
+                </div>
+                <ul class="space-y-2.5">
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-amber-600 transition-colors"><i class="fas fa-calendar-check w-6 text-slate-400"></i> Project Changelog</a></li>
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-amber-600 transition-colors"><i class="fas fa-graduation-cap w-6 text-slate-400"></i> Learning Journal</a></li>
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-amber-600 transition-colors"><i class="fas fa-archive w-6 text-slate-400"></i> Archived Projects</a></li>
+                </ul>
+            </div>
+
+            <!-- Category 4: Bookmarks -->
+            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-purple-100 text-purple-600 p-2.5 rounded-lg">
+                        <i class="fas fa-bookmark text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900">Bookmarks</h2>
+                </div>
+                <ul class="space-y-2.5">
+                    <li><a href="https://news.ycombinator.com" target="_blank" class="flex items-center text-slate-600 hover:text-purple-600 transition-colors"><i class="fas fa-square-h w-6 text-slate-400"></i> Hacker News</a></li>
+                    <li><a href="https://dev.to" target="_blank" class="flex items-center text-slate-600 hover:text-purple-600 transition-colors"><i class="fab fa-dev w-6 text-slate-400"></i> Dev.to Community</a></li>
+                    <li><a href="https://reddit.com" target="_blank" class="flex items-center text-slate-600 hover:text-purple-600 transition-colors"><i class="fab fa-reddit w-6 text-slate-400"></i> Reddit</a></li>
+                </ul>
+            </div>
+
+            <!-- Category 5: Entertainment & Inspiration -->
+            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-rose-100 text-rose-600 p-2.5 rounded-lg">
+                        <i class="fas fa-heart text-xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900">Inspiration</h2>
+                </div>
+                <ul class="space-y-2.5">
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-rose-600 transition-colors"><i class="fas fa-palette w-6 text-slate-400"></i> Color Palettes</a></li>
+                    <li><a href="#" class="flex items-center text-slate-600 hover:text-rose-600 transition-colors"><i class="fas fa-quote-left w-6 text-slate-400"></i> Design Gallery</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 text-center py-4 text-xs text-slate-500">
+        <p>© 2026 Personal Hub. Hosted with <i class="fas fa-heart text-rose-500 mx-0.5"></i> on GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
