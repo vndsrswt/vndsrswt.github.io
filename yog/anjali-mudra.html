@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjali Mudra - Yoga Mudras</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nature-bg: #FCF3CF;
+            --nature-text: #7D6608;
+            --nature-accent: #F4D03F;
+            --skin-tone: #FADBD8;
+        }
+
+        body {
+            background-color: var(--nature-bg);
+            color: var(--nature-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .mudra-container {
+            max-width: 900px;
+            width: 100%;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .visual-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            position: sticky;
+            top: 4rem;
+        }
+
+        .mudra-illustration {
+            width: 380px;
+            height: 380px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        /* Improved Anatomical Two Hands */
+        .hands-wrapper {
+            display: flex;
+            gap: 60px;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px);
+        }
+
+        .hand {
+            position: relative;
+            width: 90px;
+            height: 160px;
+            background: linear-gradient(to bottom, #FFDAB9, #FADBD8);
+            border-radius: 20% 20% 45% 45%;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset -3px -3px 10px rgba(0,0,0,0.05);
+        }
+
+        .hand.right { transform: scaleX(-1) rotate(-8deg); }
+        .hand.left { transform: rotate(-8deg); }
+
+        .finger {
+            position: absolute;
+            background: inherit;
+            width: 20px;
+            border-radius: 10px;
+            transform-origin: bottom center;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .thumb { height: 60px; width: 24px; left: -15px; bottom: 30px; transform: rotate(-50deg); }
+        .index { height: 85px; left: 5px; top: -75px; }
+        .middle { height: 100px; left: 30px; top: -85px; }
+        .ring { height: 95px; left: 55px; top: -80px; }
+        .pinky { height: 75px; left: 80px; top: -60px; }
+
+        /* Anjali Mudra precise touch */
+        .hands-wrapper.active { gap: 1px; }
+        .hands-wrapper.active .hand.left { transform: rotate(0deg) translateX(10px); }
+        .hands-wrapper.active .hand.right { transform: scaleX(-1) rotate(0deg) translateX(10px); }
+
+        .energy-node {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--nature-accent);
+            border-radius: 50%;
+            filter: blur(6px);
+            opacity: 0;
+            z-index: 30;
+            left: 50%;
+            top: 35%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hands-wrapper.active .energy-node {
+            opacity: 0.9;
+            box-shadow: 0 0 30px var(--nature-accent), 0 0 60px var(--nature-accent);
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(2); opacity: 0.4; }
+        }
+
+        /* UI Styles */
+        .content-side { display: flex; flex-direction: column; gap: 2rem; }
+        .content-side h1 { font-size: 3.5rem; font-weight: 800; margin: 0; letter-spacing: -0.02em; }
+        .tag { display: inline-block; padding: 0.5rem 1rem; background: rgba(125, 102, 8, 0.1); border-radius: 2rem; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; width: fit-content; }
+        .step-viewer { background: white; padding: 2rem; border-radius: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 1.5rem; border: 1px solid rgba(0,0,0,0.05); }
+        .step-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+        .step-item { display: flex; gap: 1rem; opacity: 0.3; transition: all 0.4s ease; font-weight: 500; padding: 0.75rem; border-radius: 1.25rem; }
+        .step-item.active { opacity: 1; background: var(--nature-bg); transform: translateX(10px); }
+        .step-num { width: 32px; height: 32px; background: var(--nature-text); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; flex-shrink: 0; }
+        .btn-practice { background: var(--nature-text); color: white; border: none; padding: 1.25rem; border-radius: 1.5rem; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; letter-spacing: 0.05em; }
+        .btn-practice:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(125, 102, 8, 0.2); }
+        .back-link { position: fixed; top: 2rem; left: 2rem; text-decoration: none; color: var(--nature-text); font-size: 0.9rem; font-weight: 600; opacity: 0.6; transition: opacity 0.3s; z-index: 100; }
+        .back-link:hover { opacity: 1; }
+
+        @media (max-width: 850px) {
+            .mudra-container { grid-template-columns: 1fr; gap: 3rem; padding-top: 6rem; }
+            .visual-side { position: relative; top: 0; }
+            .content-side h1 { font-size: 2.5rem; text-align: center; }
+            .content-side { align-items: center; }
+            .tag { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← BACK TO MUDRAS</a>
+
+    <div class="mudra-container">
+        <div class="visual-side">
+            <div class="blob-bg"></div>
+            <div id="illustration" class="mudra-illustration">
+                <div id="hands" class="hands-wrapper">
+                    <div class="energy-node"></div>
+                    <div class="hand left">
+                        <div class="finger thumb"></div>
+                        <div class="finger index"></div>
+                        <div class="finger middle"></div>
+                        <div class="finger ring"></div>
+                        <div class="finger pinky"></div>
+                    </div>
+                    <div class="hand right">
+                        <div class="finger thumb"></div>
+                        <div class="finger index"></div>
+                        <div class="finger middle"></div>
+                        <div class="finger ring"></div>
+                        <div class="finger pinky"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-side">
+            <span class="tag">Peace & Centering</span>
+            <h1>Anjali Mudra</h1>
+            
+            <div class="step-viewer">
+                <ul class="step-list">
+                    <li class="step-item" data-step="1">
+                        <span class="step-num">1</span>
+                        <span>Sit or stand tall with your heart open.</span>
+                    </li>
+                    <li class="step-item" data-step="2">
+                        <span class="step-num">2</span>
+                        <span>Slowly bring your palms together in front of your chest.</span>
+                    </li>
+                    <li class="step-item" data-step="3">
+                        <span class="step-num">3</span>
+                        <span>Gently press your fingers and palms against each other.</span>
+                    </li>
+                    <li class="step-item" data-step="4">
+                        <span class="step-num">4</span>
+                        <span>Rest your thumbs lightly against your sternum.</span>
+                    </li>
+                    <li class="step-item" data-step="5">
+                        <span class="step-num">5</span>
+                        <span>Breathe deeply, connecting your mind and heart.</span>
+                    </li>
+                </ul>
+                <button id="practiceBtn" class="btn-practice">START GUIDED PRACTICE</button>
+            </div>
+
+            <p class="description">
+                Anjali Mudra is a gesture of reverence and benediction. It harmonizes the two hemispheres of the brain and brings your focus back to the heart center, promoting a sense of inner peace and equilibrium.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const practiceBtn = document.getElementById('practiceBtn');
+        const steps = document.querySelectorAll('.step-item');
+        const hands = document.getElementById('hands');
+        
+        let isPracticing = false;
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function startPractice() {
+            isPracticing = true;
+            practiceBtn.textContent = "STOP PRACTICE";
+
+            while (isPracticing) {
+                for (let i = 0; i < steps.length; i++) {
+                    if (!isPracticing) break;
+                    steps.forEach(s => s.classList.remove('active'));
+                    steps[i].classList.add('active');
+                    
+                    hands.classList.remove('active'); 
+                    if (i >= 1) hands.classList.add('active');
+                    
+                    await sleep(4000);
+                }
+            }
+        }
+
+        practiceBtn.addEventListener('click', () => {
+            if (isPracticing) {
+                isPracticing = false;
+                practiceBtn.textContent = "START GUIDED PRACTICE";
+                steps.forEach(s => s.classList.remove('active'));
+                hands.classList.remove('active');
+            } else {
+                startPractice();
+            }
+        });
+    </script>
+</body>
+</html>

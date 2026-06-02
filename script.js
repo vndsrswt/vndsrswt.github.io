@@ -34,6 +34,14 @@ const toolData = [
         ]
     },
     {
+        category: "Meditation & Yoga",
+        links: [
+            { name: "Box Breathing", url: "breathing/box.html", description: "Regain calm and focus with square breathing." },
+            { name: "4-7-8 Breathing", url: "breathing/478.html", description: "The 'relaxing breath' technique for anxiety and sleep." },
+            { name: "Yoga Mudras", url: "yog/index.html", description: "Explore powerful hand gestures for energy and health." }
+        ]
+    },
+    {
         category: "Personal",
         links: [
             { name: "YouTube", url: "https://youtube.com", description: "Video sharing platform." },

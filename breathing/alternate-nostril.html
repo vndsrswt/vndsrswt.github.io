@@ -3,176 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alternate Nostril Breathing - Vinod</title>
+    <title>Alternate Nostril Breathing - Nature</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <style>
-        .breathing-container {
+        :root {
+            --nature-bg: #E1F5FE; /* Calm Water tint */
+            --nature-text: #01579B;
+            --nature-accent: #4FC3F7;
+            --skin-tone: #FADBD8;
+        }
+
+        body {
+            background-color: var(--nature-bg);
+            color: var(--nature-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 1.5s ease;
+        }
+
+        .main-container {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 60vh;
-            text-align: center;
+            width: 100%;
+            height: 100%;
         }
-        .circle-wrap {
+
+        .home-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+
+        .visualizer-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .hand-circle {
+            width: 380px;
+            height: 380px;
+            background: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 300px;
-            width: 300px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             position: relative;
-            margin-bottom: 2rem;
+            z-index: 10;
         }
-        .circle {
-            background-color: #8b5cf6;
-            height: 100px;
-            width: 100px;
-            border-radius: 50%;
+
+        /* Vishnu Mudra Hand */
+        .hand {
+            position: relative;
+            width: 140px;
+            height: 200px;
+            background: linear-gradient(to bottom, #FFDAB9, #FADBD8);
+            border-radius: 20% 20% 45% 45%;
+            transform: translateY(40px) rotate(0deg);
+            transition: all 1s ease;
+        }
+
+        .finger {
+            position: absolute;
+            background: inherit;
+            width: 28px;
+            border-radius: 14px;
+            transform-origin: bottom center;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .thumb { height: 80px; width: 34px; left: -30px; bottom: 40px; transform: rotate(-50deg); }
+        .index { height: 95px; left: 5px; top: -85px; }
+        .middle { height: 105px; left: 40px; top: -95px; }
+        .ring { height: 100px; left: 75px; top: -90px; }
+        .pinky { height: 80px; left: 110px; top: -70px; }
+
+        /* Folded fingers for Vishnu Mudra */
+        .hand.vishnu-mudra .index, .hand.vishnu-mudra .middle {
+            transform: rotateX(160deg) translateY(-20px);
             opacity: 0.8;
-            transition: all 4s linear;
+            height: 80px;
         }
+
+        /* Nose closing animations */
+        .hand.close-right { transform: translateY(40px) translateX(-20px) rotate(10deg); }
+        .hand.close-right .thumb { transform: rotate(-10deg) translateY(-40px) translateX(20px); }
+
+        .hand.close-left { transform: translateY(40px) translateX(20px) rotate(-10deg); }
+        .hand.close-left .ring, .hand.close-left .pinky { 
+            transform: rotate(-15deg) translateY(-40px) translateX(-20px); 
+        }
+
         .instruction {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.5s ease;
             height: 2rem;
         }
-        .breath-nostril-animation {
-            animation: breath-nostril 16s infinite;
+
+        .controls-overlay {
+            position: absolute;
+            bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.5s ease;
         }
-        @keyframes breath-nostril {
-            0%, 50%, 100% { transform: scale(1); }
-            25%, 75% { transform: scale(2.5); }
+
+        .controls-overlay.hidden { opacity: 0; pointer-events: none; transform: translateY(20px); }
+
+        .btn-toggle {
+            background: white;
+            border: none;
+            color: var(--nature-text);
+            padding: 1rem 3rem;
+            border-radius: 3rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .btn-toggle:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+        .timer-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 6px;
+            background: var(--nature-text);
+            width: 0%;
+            transition: width linear;
+        }
+
+        @media (max-width: 480px) {
+            .hand-circle { width: 300px; height: 300px; }
+            .hand { width: 110px; height: 160px; }
         }
     </style>
 </head>
 <body>
-    <button id="sidebarToggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+    <a href="../index.html" class="home-link">← EXIT</a>
 
-    <aside id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <div class="logo">
-                <a href="../index.html"><span class="logo-icon">V</span><span class="logo-text">Vinod</span></a>
-            </div>
-            <button id="collapseBtn" class="collapse-btn" aria-label="Collapse Sidebar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-collapse"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-        </div>
-        
-        <nav class="sidebar-nav">
-            <ul>
-                <li>
-                    <a href="../index.html#about">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        <span class="nav-label">About</span>
-                    </a>
-                </li>
-                <li class="has-submenu">
-                    <a href="javascript:void(0)" class="submenu-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                        <span class="nav-label">Projects</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="../index.html#projects">All Projects</a></li>
-                        <li><a href="../index.html#projects">Web Apps</a></li>
-                        <li><a href="../index.html#projects">Data Analysis</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu open">
-                    <a href="javascript:void(0)" class="submenu-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
-                        <span class="nav-label">Tools</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="../index.html#tools">Dashboard</a></li>
-                        <li class="has-submenu open">
-                            <a href="javascript:void(0)" class="submenu-toggle">
-                                <span class="nav-label">Breathing</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                            </a>
-                            <ul class="submenu">
-                                <li><a href="box.html">Box Breathing</a></li>
-                                <li><a href="478.html">4-7-8 Breathing</a></li>
-                                <li><a href="pursed-lip.html">Pursed-Lip</a></li>
-                                <li><a href="alternate-nostril.html" class="active">Alternate Nostril</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        
-        <div class="sidebar-footer">
-            <span class="footer-text">&copy; 2026 Vinod</span>
-        </div>
-    </aside>
-
-    <div class="main-content">
-        <main class="container section">
-            <h2 class="section-title">Alternate Nostril Breathing</h2>
-            <div class="breathing-container">
-                <div class="circle-wrap">
-                    <div id="breathCircle" class="circle breath-nostril-animation"></div>
+    <div class="main-container">
+        <div class="visualizer-wrap">
+            <div class="hand-circle">
+                <div id="hand" class="hand vishnu-mudra">
+                    <div class="finger thumb"></div>
+                    <div class="finger index"></div>
+                    <div class="finger middle"></div>
+                    <div class="finger ring"></div>
+                    <div class="finger pinky"></div>
                 </div>
-                <div id="breathInstruction" class="instruction">Inhale left...</div>
-                <p style="margin-top: 2rem; max-width: 600px; color: var(--text-secondary);">
-                    Alternate nostril breathing, or Nadi Shodhana, is a powerful breathing practice that can help you feel more balanced and calm. It involves using your fingers to close off one nostril at a time while breathing through the other.
-                </p>
             </div>
-        </main>
+            <div id="instruction" class="instruction">Ready</div>
+        </div>
+
+        <div id="controls" class="controls-overlay">
+            <button id="toggleBtn" class="btn-toggle">START SESSION</button>
+        </div>
+
+        <div id="timerBar" class="timer-bar"></div>
     </div>
 
     <script>
-        const instruction = document.getElementById('breathInstruction');
-        const stages = [
-            { text: 'Inhale through left nostril...', duration: 4000 },
-            { text: 'Exhale through right nostril...', duration: 4000 },
-            { text: 'Inhale through right nostril...', duration: 4000 },
-            { text: 'Exhale through left nostril...', duration: 4000 }
-        ];
-        
-        let currentStage = 0;
-        
-        function updateInstruction() {
-            instruction.textContent = stages[currentStage].text;
-            setTimeout(() => {
-                currentStage = (currentStage + 1) % stages.length;
-                updateInstruction();
-            }, stages[currentStage].duration);
+        const instruction = document.getElementById('instruction');
+        const hand = document.getElementById('hand');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const controls = document.getElementById('controls');
+        const timerBar = document.getElementById('timerBar');
+
+        let isRunning = false;
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function startSession() {
+            controls.classList.add('hidden');
+            const d = 4000; // 4 seconds per phase
+
+            while (isRunning) {
+                // 1. Close right, Inhale left
+                instruction.textContent = "Close Right, Inhale Left";
+                hand.className = "hand vishnu-mudra close-right";
+                timerBar.style.transition = `width ${d}ms linear`;
+                timerBar.style.width = "100%";
+                await sleep(d);
+                if (!isRunning) break;
+                timerBar.style.transition = "none";
+                timerBar.style.width = "0%";
+
+                // 2. Close left, Exhale right
+                instruction.textContent = "Close Left, Exhale Right";
+                hand.className = "hand vishnu-mudra close-left";
+                timerBar.style.transition = `width ${d}ms linear`;
+                timerBar.style.width = "100%";
+                await sleep(d);
+                if (!isRunning) break;
+                timerBar.style.transition = "none";
+                timerBar.style.width = "0%";
+
+                // 3. Keep left closed, Inhale right
+                instruction.textContent = "Inhale Right";
+                timerBar.style.transition = `width ${d}ms linear`;
+                timerBar.style.width = "100%";
+                await sleep(d);
+                if (!isRunning) break;
+                timerBar.style.transition = "none";
+                timerBar.style.width = "0%";
+
+                // 4. Close right, Exhale left
+                instruction.textContent = "Close Right, Exhale Left";
+                hand.className = "hand vishnu-mudra close-right";
+                timerBar.style.transition = `width ${d}ms linear`;
+                timerBar.style.width = "100%";
+                await sleep(d);
+                if (!isRunning) break;
+                timerBar.style.transition = "none";
+                timerBar.style.width = "0%";
+            }
         }
-        
-        updateInstruction();
 
-        // Sidebar Logic
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const collapseBtn = document.getElementById('collapseBtn');
-        const sidebar = document.getElementById('sidebar');
-        const submenuToggles = document.querySelectorAll('.submenu-toggle');
-
-        sidebarToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            sidebarToggle.classList.toggle('active');
-        });
-
-        collapseBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('collapsed');
-        });
-
-        submenuToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const parent = toggle.closest('.has-submenu');
-                parent.classList.toggle('open');
-            });
+        toggleBtn.addEventListener('click', () => {
+            if (isRunning) {
+                isRunning = false;
+                toggleBtn.textContent = "START SESSION";
+                instruction.textContent = "Ready";
+                hand.className = "hand vishnu-mudra";
+                controls.classList.remove('hidden');
+                timerBar.style.transition = "none";
+                timerBar.style.width = "0%";
+            } else {
+                isRunning = true;
+                toggleBtn.textContent = "STOP SESSION";
+                startSession();
+            }
         });
     </script>
 </body>

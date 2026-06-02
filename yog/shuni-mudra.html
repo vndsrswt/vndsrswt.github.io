@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuni Mudra - Yoga Mudras</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nature-bg: #EFEBE9;
+            --nature-text: #4E342E;
+            --nature-accent: #A1887F;
+            --skin-tone: #FADBD8;
+        }
+
+        body {
+            background-color: var(--nature-bg);
+            color: var(--nature-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .mudra-container {
+            max-width: 900px;
+            width: 100%;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .visual-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            position: sticky;
+            top: 4rem;
+        }
+
+        .mudra-illustration {
+            width: 380px;
+            height: 380px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        /* Improved Anatomical Hand */
+        .hand {
+            position: relative;
+            width: 180px;
+            height: 220px;
+            background: linear-gradient(to bottom, #FFDAB9, #FADBD8);
+            border-radius: 20% 20% 45% 45%;
+            transform: translateY(30px) rotate(-2deg);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset -5px -5px 15px rgba(0,0,0,0.05);
+        }
+
+        .finger {
+            position: absolute;
+            background: inherit;
+            width: 32px;
+            border-radius: 16px;
+            transform-origin: bottom center;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 1px solid rgba(255,255,255,0.3);
+            box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+        }
+
+        .thumb { height: 90px; width: 38px; left: -35px; bottom: 45px; transform: rotate(-55deg); border-radius: 19px; }
+        .index { height: 110px; left: 5px; top: -100px; transform: rotate(-4deg); }
+        .middle { height: 125px; left: 50px; top: -115px; }
+        .ring { height: 115px; left: 95px; top: -105px; transform: rotate(4deg); }
+        .pinky { height: 95px; left: 140px; top: -85px; transform: rotate(8deg); }
+
+        /* Shuni Mudra Animation (Middle + Thumb) */
+        .hand.step-3 .middle {
+            transform: rotate(35deg) translateY(45px) translateX(-5px);
+            height: 120px;
+            border-top-right-radius: 5px;
+        }
+        .hand.step-3 .thumb {
+            transform: rotate(45deg) translateY(-55px) translateX(85px);
+            border-top-left-radius: 5px;
+        }
+
+        .energy-node {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--nature-accent);
+            border-radius: 50%;
+            filter: blur(6px);
+            opacity: 0;
+            z-index: 30;
+            pointer-events: none;
+            left: 85px;
+            top: -10px;
+        }
+
+        .hand.step-3 .energy-node {
+            opacity: 0.9;
+            box-shadow: 0 0 25px var(--nature-accent), 0 0 50px var(--nature-accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.8); opacity: 0.4; }
+        }
+
+        /* UI Styles */
+        .content-side { display: flex; flex-direction: column; gap: 2rem; }
+        .content-side h1 { font-size: 3.5rem; font-weight: 800; margin: 0; letter-spacing: -0.02em; }
+        .tag { display: inline-block; padding: 0.5rem 1rem; background: rgba(78, 52, 46, 0.1); border-radius: 2rem; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; width: fit-content; }
+        .step-viewer { background: white; padding: 2rem; border-radius: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; gap: 1.5rem; border: 1px solid rgba(0,0,0,0.05); }
+        .step-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem; }
+        .step-item { display: flex; gap: 1rem; opacity: 0.3; transition: all 0.4s ease; font-weight: 500; padding: 0.75rem; border-radius: 1.25rem; }
+        .step-item.active { opacity: 1; background: var(--nature-bg); transform: translateX(10px); }
+        .step-num { width: 32px; height: 32px; background: var(--nature-text); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 800; flex-shrink: 0; }
+        .btn-practice { background: var(--nature-text); color: white; border: none; padding: 1.25rem; border-radius: 1.5rem; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; letter-spacing: 0.05em; }
+        .btn-practice:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(78, 52, 46, 0.2); }
+        .back-link { position: fixed; top: 2rem; left: 2rem; text-decoration: none; color: var(--nature-text); font-size: 0.9rem; font-weight: 600; opacity: 0.6; transition: opacity 0.3s; z-index: 100; }
+        .back-link:hover { opacity: 1; }
+
+        @media (max-width: 850px) {
+            .mudra-container { grid-template-columns: 1fr; gap: 3rem; padding-top: 6rem; }
+            .visual-side { position: relative; top: 0; }
+            .content-side h1 { font-size: 2.5rem; text-align: center; }
+            .content-side { align-items: center; }
+            .tag { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← BACK TO MUDRAS</a>
+
+    <div class="mudra-container">
+        <div class="visual-side">
+            <div class="blob-bg"></div>
+            <div id="illustration" class="mudra-illustration">
+                <div id="hand" class="hand">
+                    <div class="energy-node"></div>
+                    <div class="finger thumb"></div>
+                    <div class="finger index"></div>
+                    <div class="finger middle"></div>
+                    <div class="finger ring"></div>
+                    <div class="finger pinky"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-side">
+            <span class="tag">Patience & Discipline</span>
+            <h1>Shuni Mudra</h1>
+            
+            <div class="step-viewer">
+                <ul class="step-list">
+                    <li class="step-item" data-step="1">
+                        <span class="step-num">1</span>
+                        <span>Straighten your back and relax your shoulders.</span>
+                    </li>
+                    <li class="step-item" data-step="2">
+                        <span class="step-num">2</span>
+                        <span>Rest your hands on your knees, palms upward.</span>
+                    </li>
+                    <li class="step-item" data-step="3">
+                        <span class="step-num">3</span>
+                        <span>Join the tip of your middle finger and thumb.</span>
+                    </li>
+                    <li class="step-item" data-step="4">
+                        <span class="step-num">4</span>
+                        <span>Keep the index, ring, and pinky fingers extended.</span>
+                    </li>
+                    <li class="step-item" data-step="5">
+                        <span class="step-num">5</span>
+                        <span>Hold the gesture and focus on your heartbeat.</span>
+                    </li>
+                </ul>
+                <button id="practiceBtn" class="btn-practice">START GUIDED PRACTICE</button>
+            </div>
+
+            <p class="description">
+                Shuni Mudra is the "Mudra of Patience". It balances the fire of the thumb with the ether element of the middle finger, helping you develop discernment, courage, and a steady sense of inner discipline.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const practiceBtn = document.getElementById('practiceBtn');
+        const steps = document.querySelectorAll('.step-item');
+        const hand = document.getElementById('hand');
+        
+        let isPracticing = false;
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        async function startPractice() {
+            isPracticing = true;
+            practiceBtn.textContent = "STOP PRACTICE";
+
+            while (isPracticing) {
+                for (let i = 0; i < steps.length; i++) {
+                    if (!isPracticing) break;
+                    steps.forEach(s => s.classList.remove('active'));
+                    steps[i].classList.add('active');
+                    
+                    hand.className = 'hand'; 
+                    if (i >= 2) hand.classList.add('step-3');
+                    
+                    await sleep(4000);
+                }
+            }
+        }
+
+        practiceBtn.addEventListener('click', () => {
+            if (isPracticing) {
+                isPracticing = false;
+                practiceBtn.textContent = "START GUIDED PRACTICE";
+                steps.forEach(s => s.classList.remove('active'));
+                hand.className = 'hand';
+            } else {
+                startPractice();
+            }
+        });
+    </script>
+</body>
+</html>

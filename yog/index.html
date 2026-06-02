@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Mudras - Vinod</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mudra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .mudra-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .mudra-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+
+        .mudra-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: #0f172a;
+        }
+
+        .mudra-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .mudra-card .arrow {
+            margin-top: auto;
+            color: #3b82f6;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .exit-link {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            text-decoration: none;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 100;
+        }
+
+        @media (max-width: 640px) {
+            .header h1 { font-size: 2.5rem; }
+            .main-content { padding: 4rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="exit-link">← EXIT</a>
+
+    <main class="main-content">
+        <div class="header">
+            <h1>Yoga Mudras</h1>
+            <p>Hand gestures that guide energy flow within the body to balance mind and spirit.</p>
+        </div>
+
+        <div class="mudra-grid">
+            <a href="gyan-mudra.html" class="mudra-card">
+                <h2>Gyan Mudra</h2>
+                <p>The Mudra of Knowledge. Improves concentration, sharpens memory, and reduces stress.</p>
+                <span class="arrow">Explore →</span>
+            </a>
+
+            <a href="anjali-mudra.html" class="mudra-card">
+                <h2>Anjali Mudra</h2>
+                <p>The Gesture of Prayer. Promotes inner peace, focus, and gratitude. Central to many practices.</p>
+                <span class="arrow">Explore →</span>
+            </a>
+
+            <a href="prana-mudra.html" class="mudra-card">
+                <h2>Prana Mudra</h2>
+                <p>The Mudra of Life. Boosts vitality, reduces fatigue, and improves vision and immunity.</p>
+                <span class="arrow">Explore →</span>
+            </a>
+
+            <a href="shuni-mudra.html" class="mudra-card">
+                <h2>Shuni Mudra</h2>
+                <p>The Mudra of Patience. Helps in developing discipline, patience, and mental stability.</p>
+                <span class="arrow">Explore →</span>
+            </a>
+        </div>
+    </main>
+</body>
+</html>
