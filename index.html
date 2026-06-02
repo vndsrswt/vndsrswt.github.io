@@ -3,115 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Hub</title>
-    <!-- Tailwind CSS for modern, easy styling -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- FontAwesome for clean icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Personal Website & Tools Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+<body>
+    <button id="sidebarToggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-    <!-- Header Section -->
-    <header class="bg-gradient-to-r header-gradient from-blue-600 to-indigo-700 text-white py-10 px-6 shadow-md">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <h1 class="text-3xl font-bold tracking-tight">Personal Workspace</h1>
-                <p class="text-blue-100 mt-1 text-sm md:text-base">Your centralized hub for tools, documents, history, and bookmarks.</p>
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a href="#"><span class="logo-icon">V</span><span class="logo-text">Vinod</span></a>
             </div>
-            <!-- Quick Search Bar (Visual) -->
-            <div class="relative w-full md:w-72">
-                <input type="text" placeholder="Search resources..." class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm">
-                <i class="fas fa-search absolute right-3 top-3 text-white/60"></i>
-            </div>
+            <button id="collapseBtn" class="collapse-btn" aria-label="Collapse Sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-collapse"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
         </div>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- Category 1: Digital Tools -->
-            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-blue-100 text-blue-600 p-2.5 rounded-lg">
-                        <i class="fas fa-tools text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold text-slate-900">Web Tools</h2>
-                </div>
-                <ul class="space-y-2.5">
-                    <li><a href="https://github.com" target="_blank" class="flex items-center text-slate-600 hover:text-blue-600 transition-colors"><i class="fab fa-github w-6 text-slate-400"></i> GitHub</a></li>
-                    <li><a href="https://chatgpt.com" target="_blank" class="flex items-center text-slate-600 hover:text-blue-600 transition-colors"><i class="fas fa-robot w-6 text-slate-400"></i> AI Assistant</a></li>
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-blue-600 transition-colors"><i class="fas fa-code w-6 text-slate-400"></i> Code Sandbox</a></li>
-                </ul>
-            </div>
-
-            <!-- Category 2: Documents & Notes -->
-            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-emerald-100 text-emerald-600 p-2.5 rounded-lg">
-                        <i class="fas fa-file-alt text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold text-slate-900">Documents</h2>
-                </div>
-                <ul class="space-y-2.5">
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-emerald-600 transition-colors"><i class="fas fa-book w-6 text-slate-400"></i> Personal Wiki</a></li>
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-emerald-600 transition-colors"><i class="fas fa-id-card w-6 text-slate-400"></i> Resume / CV</a></li>
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-emerald-600 transition-colors"><i class="fas fa-sticky-note w-6 text-slate-400"></i> Quick Notes</a></li>
-                </ul>
-            </div>
-
-            <!-- Category 3: History & Logs -->
-            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-amber-100 text-amber-600 p-2.5 rounded-lg">
-                        <i class="fas fa-history text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold text-slate-900">History & Logs</h2>
-                </div>
-                <ul class="space-y-2.5">
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-amber-600 transition-colors"><i class="fas fa-calendar-check w-6 text-slate-400"></i> Project Changelog</a></li>
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-amber-600 transition-colors"><i class="fas fa-graduation-cap w-6 text-slate-400"></i> Learning Journal</a></li>
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-amber-600 transition-colors"><i class="fas fa-archive w-6 text-slate-400"></i> Archived Projects</a></li>
-                </ul>
-            </div>
-
-            <!-- Category 4: Bookmarks -->
-            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-purple-100 text-purple-600 p-2.5 rounded-lg">
-                        <i class="fas fa-bookmark text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold text-slate-900">Bookmarks</h2>
-                </div>
-                <ul class="space-y-2.5">
-                    <li><a href="https://news.ycombinator.com" target="_blank" class="flex items-center text-slate-600 hover:text-purple-600 transition-colors"><i class="fas fa-square-h w-6 text-slate-400"></i> Hacker News</a></li>
-                    <li><a href="https://dev.to" target="_blank" class="flex items-center text-slate-600 hover:text-purple-600 transition-colors"><i class="fab fa-dev w-6 text-slate-400"></i> Dev.to Community</a></li>
-                    <li><a href="https://reddit.com" target="_blank" class="flex items-center text-slate-600 hover:text-purple-600 transition-colors"><i class="fab fa-reddit w-6 text-slate-400"></i> Reddit</a></li>
-                </ul>
-            </div>
-
-            <!-- Category 5: Entertainment & Inspiration -->
-            <div class="bg-white rounded-xl shadow-xs border border-slate-200/80 p-5 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-rose-100 text-rose-600 p-2.5 rounded-lg">
-                        <i class="fas fa-heart text-xl"></i>
-                    </div>
-                    <h2 class="text-xl font-bold text-slate-900">Inspiration</h2>
-                </div>
-                <ul class="space-y-2.5">
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-rose-600 transition-colors"><i class="fas fa-palette w-6 text-slate-400"></i> Color Palettes</a></li>
-                    <li><a href="#" class="flex items-center text-slate-600 hover:text-rose-600 transition-colors"><i class="fas fa-quote-left w-6 text-slate-400"></i> Design Gallery</a></li>
-                </ul>
-            </div>
-
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#about" class="active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span class="nav-label">About</span>
+                    </a>
+                </li>
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        <span class="nav-label">Projects</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#projects">All Projects</a></li>
+                        <li><a href="#projects">Web Apps</a></li>
+                        <li><a href="#projects">Data Analysis</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="javascript:void(0)" class="submenu-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg>
+                        <span class="nav-label">Tools</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="#tools">Dashboard</a></li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0)" class="submenu-toggle">
+                                <span class="nav-label">Breathing</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="breathing/box.html">Box Breathing</a></li>
+                                <li><a href="breathing/478.html">4-7-8 Breathing</a></li>
+                                <li><a href="breathing/pursed-lip.html">Pursed-Lip</a></li>
+                                <li><a href="breathing/alternate-nostril.html">Alternate Nostril</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#tools">Design Assets</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <span class="footer-text">&copy; 2026 Vinod</span>
         </div>
+    </aside>
+
+    <div class="main-content">
+        <main>
+            <!-- About Section -->
+            <section id="about" class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="profile-placeholder"></div>
+                        <h1>Hi, I'm Vinod</h1>
+                        <p class="subtitle">Developer | Coder | Data-Analyst</p>
+                        <p class="bio">I am a passionate developer and data analyst focused on building efficient tools and uncovering insights from data. This space serves as my digital garden for projects and a quick-access portal for the tools I use every day.</p>
+                    </div>
+                </div>
+            </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="container section">
+            <h2 class="section-title">Projects</h2>
+            <div id="projects-grid" class="projects-grid">
+                <!-- Projects will be dynamically injected here -->
+                <div class="loading">Loading projects...</div>
+            </div>
+        </section>
+
+        <!-- Tools Portal Section -->
+        <section id="tools" class="section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Tools & Bookmarks</h2>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search tools or categories...">
+                    </div>
+                </div>
+                <div id="dashboard" class="dashboard-grid">
+                    <!-- Cards will be dynamically injected here -->
+                    <div class="loading">Loading tools...</div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 text-center py-4 text-xs text-slate-500">
-        <p>© 2026 Personal Hub. Hosted with <i class="fas fa-heart text-rose-500 mx-0.5"></i> on GitHub Pages.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Vinod. All rights reserved.</p>
+        </div>
     </footer>
+    </div> <!-- End main-content -->
 
+    <script src="script.js"></script>
 </body>
 </html>

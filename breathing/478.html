@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-7-8 Breathing - Nature</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --accent-color: #000000;
+            --border-color: #f0f0f0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 1s ease;
+        }
+
+        .main-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+
+        .home-link:hover {
+            opacity: 1;
+        }
+
+        .visualizer-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .shape-wrap {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border: 2px solid rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-display {
+            font-size: 8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            z-index: 15;
+            pointer-events: none;
+            opacity: 0.8;
+            transition: color 0.5s ease;
+        }
+
+        .progress-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: var(--text-primary);
+            opacity: 0.1;
+            transition: height 0.5s linear, background-color 0.5s ease;
+        }
+
+        .instruction {
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            transition: all 0.5s ease;
+            text-align: center;
+        }
+
+        .controls-overlay {
+            position: absolute;
+            bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .controls-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        .btn-toggle {
+            background: white;
+            border: none;
+            color: black;
+            padding: 1rem 3rem;
+            border-radius: 3rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .blob {
+            position: absolute;
+            width: 80vw;
+            height: 80vw;
+            max-width: 800px;
+            max-height: 800px;
+            background: white;
+            filter: blur(100px);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 2s ease;
+            pointer-events: none;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(10%, 10%); }
+        }
+
+        @media (max-width: 480px) {
+            .shape-wrap {
+                width: 280px;
+                height: 280px;
+            }
+            .timer-display {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="home-link">← EXIT</a>
+
+    <div id="blob" class="blob"></div>
+
+    <div class="main-container">
+        <div class="visualizer-wrap">
+            <div id="shape" class="shape-wrap">
+                <div id="timerDisplay" class="timer-display"></div>
+                <div id="progress" class="progress-fill"></div>
+            </div>
+            <div id="instruction" class="instruction">4-7-8 Breathing</div>
+        </div>
+
+        <div id="controls" class="controls-overlay">
+            <button id="toggleBtn" class="btn-toggle">START SESSION</button>
+        </div>
+    </div>
+
+    <script>
+        const body = document.body;
+        const instruction = document.getElementById('instruction');
+        const shape = document.getElementById('shape');
+        const progress = document.getElementById('progress');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const controls = document.getElementById('controls');
+
+        let isRunning = false;
+        let countdownInterval;
+
+        const colors = {
+            inhale: { bg: '#F1F8E9', text: '#2D5A27' }, // Forest Green
+            hold:   { bg: '#FCF3CF', text: '#7D6608' }, // Sunlit Sand
+            exhale: { bg: '#EBF5FB', text: '#1B4F72' }, // River Blue
+            ready:  { bg: '#ffffff', text: '#1a1a1a' }
+        };
+
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        function runCountdown(seconds, color) {
+            return new Promise((resolve) => {
+                let timeLeft = seconds;
+                timerDisplay.textContent = timeLeft;
+                timerDisplay.style.color = color;
+                
+                countdownInterval = setInterval(() => {
+                    timeLeft--;
+                    if (timeLeft >= 0) {
+                        timerDisplay.textContent = timeLeft;
+                    }
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        resolve();
+                    }
+                }, 1000);
+            });
+        }
+
+        function updateUI(phase, durationMs) {
+            const theme = colors[phase];
+            body.style.backgroundColor = theme.bg;
+            instruction.textContent = phase.charAt(0).toUpperCase() + phase.slice(1);
+            instruction.style.color = theme.text;
+            
+            if (phase === 'inhale') {
+                progress.style.transition = `height ${durationMs}ms linear`;
+                progress.style.height = '100%';
+                shape.style.transform = 'scale(1.2)';
+            } else if (phase === 'exhale') {
+                progress.style.transition = `height ${durationMs}ms linear`;
+                progress.style.height = '0%';
+                shape.style.transform = 'scale(1)';
+            }
+            
+            progress.style.backgroundColor = theme.text;
+        }
+
+        async function startSession() {
+            controls.classList.add('hidden');
+            timerDisplay.style.opacity = '1';
+
+            while (isRunning) {
+                // Inhale (4s)
+                updateUI('inhale', 4000);
+                await runCountdown(4, colors.inhale.text);
+                if (!isRunning) break;
+
+                // Hold (7s)
+                updateUI('hold', 7000);
+                await runCountdown(7, colors.hold.text);
+                if (!isRunning) break;
+
+                // Exhale (8s)
+                updateUI('exhale', 8000);
+                await runCountdown(8, colors.exhale.text);
+                if (!isRunning) break;
+            }
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            if (isRunning) {
+                isRunning = false;
+                clearInterval(countdownInterval);
+                toggleBtn.textContent = "START SESSION";
+                instruction.textContent = "Ready";
+                instruction.style.color = 'var(--text-secondary)';
+                timerDisplay.textContent = "";
+                body.style.backgroundColor = 'white';
+                progress.style.transition = "none";
+                progress.style.height = "0%";
+                shape.style.transform = 'scale(1)';
+                controls.classList.remove('hidden');
+            } else {
+                isRunning = true;
+                toggleBtn.textContent = "STOP SESSION";
+                startSession();
+            }
+        });
+    </script>
+</body>
+</html>
